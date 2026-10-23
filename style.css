@@ -1,0 +1,392 @@
+/* ==========================================================
+   Restaurante Muralha da Sé — folha de estilos
+   Cores: cinzento granito, bordeaux e verde
+   ========================================================== */
+
+:root {
+  --granito-escuro: #2e3032;
+  --granito: #4a4d50;
+  --granito-claro: #8c8f91;
+  --pedra: #ece8e2;        /* fundo claro, cor de pedra */
+  --branco: #faf8f5;
+  --bordeaux: #6e1a2b;
+  --bordeaux-escuro: #4f1220;
+  --verde: #2f4a3a;
+  --verde-claro: #4c6b55;
+  --texto: #2a2a2a;
+
+  --letra-titulos: Georgia, "Times New Roman", serif;
+  --letra-texto: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --largura-max: 1100px;
+}
+
+/* ---------- Base ---------- */
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--letra-texto);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--pedra);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  font-family: var(--letra-titulos);
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h3 { font-size: 1.3rem; }
+
+a { color: inherit; }
+
+/* ---------- Barra de navegação ---------- */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--granito-escuro);
+  color: var(--branco);
+}
+
+.topo-conteudo {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.logotipo {
+  font-family: var(--letra-titulos);
+  font-size: 1.3rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.menu-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.2rem;
+}
+
+.menu-nav a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.menu-nav a:hover { opacity: 1; text-decoration: underline; }
+
+/* ---------- Botões ---------- */
+
+.botao {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao-ligar {
+  background: var(--bordeaux);
+  color: var(--branco);
+  font-size: 1.15rem;
+  border: 2px solid var(--branco);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.botao-ligar:hover,
+.botao-ligar:focus {
+  background: var(--bordeaux-escuro);
+  transform: translateY(-2px);
+}
+
+.botao-contorno {
+  border: 2px solid var(--verde);
+  color: var(--verde);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.botao-contorno:hover { background: var(--verde); color: var(--branco); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: flex-end;
+  color: var(--branco);
+  /* Foto da fachada com uma camada escura por cima para o texto se ler bem */
+  background:
+    linear-gradient(to top, rgba(30, 32, 34, 0.92) 0%, rgba(30, 32, 34, 0.45) 55%, rgba(30, 32, 34, 0.2) 100%),
+    url("imagens/718315666_18058588628718749_3420631590846412278_n.jpg") center 40% / cover no-repeat;
+}
+
+.hero-texto {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+}
+
+.hero-local {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 4.8rem);
+}
+
+.hero-frase {
+  max-width: 34rem;
+  font-size: 1.2rem;
+  margin: 0 0 2rem;
+}
+
+.hero-numero {
+  margin: 0.8rem 0 0;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+/* ---------- Secções ---------- */
+
+.seccao {
+  padding: 5rem 1rem;
+  scroll-margin-top: 3.5rem; /* para a barra fixa não tapar o título */
+}
+
+.contentor {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+}
+
+.duas-colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.centrado { text-align: center; }
+
+.etiqueta {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.introducao {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Cores de cada secção */
+.seccao-clara { background: var(--pedra); }
+.seccao-clara .etiqueta { color: var(--bordeaux); }
+.seccao-clara h2 { color: var(--granito-escuro); }
+
+.seccao-granito { background: var(--granito); color: var(--branco); }
+.seccao-granito .etiqueta { color: #d7b5bc; }
+
+.seccao-bordeaux { background: var(--bordeaux); color: var(--branco); }
+.seccao-bordeaux .etiqueta { color: #c9d8cc; }
+
+.seccao-verde { background: var(--verde); color: var(--branco); }
+.seccao-verde .etiqueta { color: #e3c9cf; }
+
+/* ---------- Porquê ---------- */
+
+.destaques {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.destaques li {
+  flex: 1 1 8rem;
+  background: var(--branco);
+  border-left: 4px solid var(--verde);
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+}
+
+.destaques strong {
+  display: block;
+  font-family: var(--letra-titulos);
+  font-size: 1.5rem;
+  color: var(--bordeaux);
+  font-weight: normal;
+}
+
+.fotos-empilhadas {
+  display: grid;
+  gap: 1rem;
+}
+
+.fotos-empilhadas img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ---------- Ementa ---------- */
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cartao {
+  background: var(--granito-escuro);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartao img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cartao-texto { padding: 1.2rem 1.4rem 1.5rem; }
+.cartao-texto p { margin: 0; opacity: 0.85; }
+
+.sobremesas {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sobremesas ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sobremesas li {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+}
+
+.sobremesas li span {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-left: 0.3rem;
+}
+
+/* ---------- Horário e morada ---------- */
+
+.tabela-horario {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--branco);
+}
+
+.tabela-horario th,
+.tabela-horario td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--pedra);
+}
+
+.tabela-horario th { font-weight: 600; color: var(--granito-escuro); }
+
+.tabela-horario .fechado td {
+  color: var(--bordeaux);
+  font-weight: 600;
+}
+
+.morada {
+  font-style: normal;
+  font-family: var(--letra-titulos);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.foto-fachada {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ---------- Contactos ---------- */
+
+.lista-contactos {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  line-height: 2;
+}
+
+.lista-contactos a { color: var(--branco); }
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+  background: var(--granito-escuro);
+  color: var(--granito-claro);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.rodape p { margin: 0.2rem 0; }
+.rodape-nota { font-size: 0.8rem; }
+
+/* ---------- Telemóvel e tablet ---------- */
+
+@media (max-width: 800px) {
+  .duas-colunas,
+  .cartoes {
+    grid-template-columns: 1fr;
+  }
+
+  .seccao { padding: 3.5rem 1rem; }
+
+  /* Na secção dos vinhos, o texto aparece antes das fotos */
+  .seccao-bordeaux .fotos-empilhadas { order: 2; }
+
+  .menu-nav { display: none; }
+
+  .botao-ligar {
+    display: block;
+    text-align: center;
+  }
+}
