@@ -1,19 +1,14 @@
 /* ==========================================================
    Restaurante Muralha da Sé — folha de estilos
-   Cores: cinzento granito, bordeaux e verde
+   Só duas cores: bordeaux e bege (cor de pedra)
    ========================================================== */
 
 :root {
-  --granito-escuro: #2e3032;
-  --granito: #4a4d50;
-  --granito-claro: #8c8f91;
   --pedra: #ece8e2;        /* fundo claro, cor de pedra */
-  --branco: #faf8f5;
   --bordeaux: #6e1a2b;
-  --bordeaux-escuro: #4f1220;
-  --verde: #2f4a3a;
-  --verde-claro: #4c6b55;
-  --texto: #2a2a2a;
+  --branco: #ffffff;       /* texto sobre bordeaux */
+  --texto: #1f1a1b;        /* texto sobre bege */
+  --linha: rgba(110, 26, 43, 0.25); /* linhas finas em bordeaux */
 
   --letra-titulos: Georgia, "Times New Roman", serif;
   --letra-texto: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -59,7 +54,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--granito-escuro);
+  background: var(--bordeaux);
   color: var(--branco);
 }
 
@@ -116,17 +111,18 @@ a { color: inherit; }
 
 .botao-ligar:hover,
 .botao-ligar:focus {
-  background: var(--bordeaux-escuro);
+  background: var(--pedra);
+  color: var(--bordeaux);
   transform: translateY(-2px);
 }
 
 .botao-contorno {
-  border: 2px solid var(--verde);
-  color: var(--verde);
+  border: 2px solid var(--bordeaux);
+  color: var(--bordeaux);
   margin: 0.5rem 0 1.5rem;
 }
 
-.botao-contorno:hover { background: var(--verde); color: var(--branco); }
+.botao-contorno:hover { background: var(--bordeaux); color: var(--branco); }
 
 /* ---------- Hero ---------- */
 
@@ -137,7 +133,7 @@ a { color: inherit; }
   color: var(--branco);
   /* Foto da fachada com uma camada escura por cima para o texto se ler bem */
   background:
-    linear-gradient(to top, rgba(30, 32, 34, 0.92) 0%, rgba(30, 32, 34, 0.45) 55%, rgba(30, 32, 34, 0.2) 100%),
+    linear-gradient(to top, rgba(110, 26, 43, 0.92) 0%, rgba(110, 26, 43, 0.45) 55%, rgba(110, 26, 43, 0.2) 100%),
     url("imagens/718315666_18058588628718749_3420631590846412278_n.jpg") center 40% / cover no-repeat;
 }
 
@@ -208,16 +204,13 @@ a { color: inherit; }
 /* Cores de cada secção */
 .seccao-clara { background: var(--pedra); }
 .seccao-clara .etiqueta { color: var(--bordeaux); }
-.seccao-clara h2 { color: var(--granito-escuro); }
+.seccao-clara h2 { color: var(--texto); }
 
-.seccao-granito { background: var(--granito); color: var(--branco); }
-.seccao-granito .etiqueta { color: #d7b5bc; }
+/* Duas secções claras seguidas ficam separadas por uma linha fina */
+.seccao-clara + .seccao-clara { border-top: 1px solid var(--linha); }
 
 .seccao-bordeaux { background: var(--bordeaux); color: var(--branco); }
-.seccao-bordeaux .etiqueta { color: #c9d8cc; }
-
-.seccao-verde { background: var(--verde); color: var(--branco); }
-.seccao-verde .etiqueta { color: #e3c9cf; }
+.seccao-bordeaux .etiqueta { color: var(--pedra); }
 
 /* ---------- Porquê ---------- */
 
@@ -232,8 +225,8 @@ a { color: inherit; }
 
 .destaques li {
   flex: 1 1 8rem;
-  background: var(--branco);
-  border-left: 4px solid var(--verde);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--bordeaux);
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
 }
@@ -267,7 +260,8 @@ a { color: inherit; }
 }
 
 .cartao {
-  background: var(--granito-escuro);
+  background: var(--bordeaux);
+  color: var(--branco);
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -286,7 +280,7 @@ a { color: inherit; }
 .sobremesas {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid var(--linha);
 }
 
 .sobremesas ul {
@@ -299,7 +293,7 @@ a { color: inherit; }
 }
 
 .sobremesas li {
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--bordeaux);
   border-radius: 999px;
   padding: 0.5rem 1.2rem;
 }
@@ -315,17 +309,16 @@ a { color: inherit; }
 .tabela-horario {
   width: 100%;
   border-collapse: collapse;
-  background: var(--branco);
 }
 
 .tabela-horario th,
 .tabela-horario td {
   text-align: left;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--pedra);
+  border-bottom: 1px solid var(--linha);
 }
 
-.tabela-horario th { font-weight: 600; color: var(--granito-escuro); }
+.tabela-horario th { font-weight: 600; color: var(--texto); }
 
 .tabela-horario .fechado td {
   color: var(--bordeaux);
@@ -360,8 +353,9 @@ a { color: inherit; }
 /* ---------- Rodapé ---------- */
 
 .rodape {
-  background: var(--granito-escuro);
-  color: var(--granito-claro);
+  background: var(--pedra);
+  color: var(--texto);
+  border-top: 1px solid var(--linha);
   text-align: center;
   padding: 2rem 1rem;
   font-size: 0.9rem;
