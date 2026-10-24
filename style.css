@@ -19,7 +19,11 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* o iPhone não aumenta o texto sozinho ao rodar */
+  text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -43,10 +47,19 @@ h1, h2, h3 {
   margin: 0 0 0.6em;
 }
 
+h1, h2 { text-wrap: balance; } /* linhas dos títulos com tamanho parecido */
+
 h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
 h3 { font-size: 1.3rem; }
 
 a { color: inherit; }
+
+/* Contorno visível para quem navega com o teclado */
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 
 /* ---------- Barra de navegação ---------- */
 
@@ -83,6 +96,7 @@ a { color: inherit; }
 }
 
 .menu-nav a {
+  padding: 0.3rem 0;
   text-decoration: none;
   font-size: 0.95rem;
   opacity: 0.85;
@@ -164,6 +178,7 @@ a { color: inherit; }
 
 .hero {
   min-height: 88vh;
+  min-height: 88svh; /* no telemóvel, conta com a barra do browser */
   display: flex;
   align-items: flex-end;
   color: var(--branco);
@@ -209,7 +224,7 @@ a { color: inherit; }
 
 .seccao {
   padding: 5rem 1rem;
-  scroll-margin-top: 3.5rem; /* para a barra fixa não tapar o título */
+  scroll-margin-top: 4.5rem; /* para a barra fixa não tapar o título */
 }
 
 .contentor {
@@ -262,7 +277,7 @@ a { color: inherit; }
 }
 
 .destaques li {
-  flex: 1 1 8rem;
+  flex: 1 1 6rem; /* os três cabem lado a lado também no telemóvel */
   border: 1px solid var(--linha);
   border-left: 4px solid var(--bordeaux);
   padding: 0.8rem 1rem;
@@ -370,6 +385,10 @@ a { color: inherit; }
   border-bottom: 1px solid var(--linha);
 }
 
+/* Os dias alinham à esquerda com o título por cima */
+.tabela-horario th { padding-left: 0; }
+.tabela-horario td { padding-right: 0; }
+
 .tabela-horario th { font-weight: 600; color: var(--texto); }
 
 .tabela-horario .fechado td {
@@ -438,7 +457,7 @@ a { color: inherit; }
   list-style: none;
   padding: 0;
   margin: 2.5rem 0 0;
-  line-height: 2;
+  line-height: 2.2; /* mais espaço para tocar nos links com o dedo */
 }
 
 .lista-contactos a { color: var(--branco); }
@@ -479,12 +498,50 @@ a { color: inherit; }
     grid-template-columns: 1fr;
   }
 
-  .seccao { padding: 3.5rem 1rem; }
+  .duas-colunas { gap: 2.5rem; }
+
+  .seccao {
+    padding: 3.5rem 1rem;
+    scroll-margin-top: 6.5rem; /* a barra fica mais alta com o menu por baixo */
+  }
 
   /* Na secção dos vinhos, o texto aparece antes das fotos */
   .seccao-bordeaux .fotos-empilhadas { order: 2; }
 
-  .menu-nav { display: none; }
+  /* O menu fica numa linha por baixo do nome, que se desliza com o dedo */
+  .topo-conteudo {
+    padding-bottom: 0.2rem;
+    row-gap: 0.1rem;
+  }
+
+  .menu-nav {
+    width: calc(100% + 2rem);
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .menu-nav::-webkit-scrollbar { display: none; }
+
+  .menu-nav a {
+    padding: 0.6rem 0; /* área de toque com cerca de 44px de altura */
+    white-space: nowrap;
+  }
+
+  /* A sombra da foto vem de baixo, onde está o texto, para se ler em toda a largura */
+  .hero {
+    background-image:
+      linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 55%, rgba(0, 0, 0, 0.1) 100%),
+      url("imagens/718315666_18058588628718749_3420631590846412278_n.jpg");
+  }
+
+  .hero-texto { padding-bottom: 3rem; }
+
+  .hero-frase { font-size: 1.1rem; }
+
+  .hero-numero { text-align: center; }
 
   .botao-ligar {
     display: flex;
