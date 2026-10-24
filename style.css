@@ -101,19 +101,55 @@ a { color: inherit; }
   transition: background 0.2s, transform 0.2s;
 }
 
+/* Botão de reserva: bege cheio sobre fundos escuros, com um anel bege à volta */
 .botao-ligar {
-  background: var(--bordeaux);
-  color: var(--branco);
-  font-size: 1.15rem;
-  border: 2px solid var(--branco);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.1rem 2.4rem;
+  background: var(--pedra);
+  color: var(--bordeaux);
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  border: 2px solid var(--pedra);
+  box-shadow: 0 0 0 5px rgba(236, 232, 226, 0.35);
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .botao-ligar:hover,
 .botao-ligar:focus {
+  background: var(--bordeaux);
+  color: var(--pedra);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 7px rgba(236, 232, 226, 0.5);
+}
+
+/* Versão para fundos claros: bordeaux cheio, anel bordeaux */
+.botao-ligar-escuro {
+  background: var(--bordeaux);
+  color: var(--pedra);
+  border-color: var(--bordeaux);
+  box-shadow: 0 0 0 5px rgba(110, 26, 43, 0.2);
+}
+
+.botao-ligar-escuro:hover,
+.botao-ligar-escuro:focus {
   background: var(--pedra);
   color: var(--bordeaux);
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 7px rgba(110, 26, 43, 0.3);
+}
+
+/* Ícones de linha desenhados em SVG */
+.icone {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .botao-contorno {
@@ -304,6 +340,20 @@ a { color: inherit; }
   margin-left: 0.3rem;
 }
 
+.reservar-ementa {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--linha);
+  text-align: center;
+}
+
+.reservar-ementa p {
+  font-family: var(--letra-titulos);
+  font-size: 1.3rem;
+  color: var(--bordeaux);
+  margin: 0 0 1.5rem;
+}
+
 /* ---------- Horário e morada ---------- */
 
 .tabela-horario {
@@ -380,7 +430,7 @@ a { color: inherit; }
   .menu-nav { display: none; }
 
   .botao-ligar {
-    display: block;
-    text-align: center;
+    display: flex;
+    padding: 1.1rem 1.2rem;
   }
 }
