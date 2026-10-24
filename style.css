@@ -391,6 +391,47 @@ a { color: inherit; }
   border-radius: 4px;
 }
 
+/* ---------- Perguntas frequentes ---------- */
+
+.perguntas {
+  max-width: 46rem;
+  border-top: 1px solid var(--linha);
+}
+
+.perguntas details { border-bottom: 1px solid var(--linha); }
+
+.perguntas summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  font-family: var(--letra-titulos);
+  font-size: 1.2rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.perguntas summary::-webkit-details-marker { display: none; }
+
+.perguntas summary:hover,
+.perguntas summary:focus-visible { color: var(--bordeaux); }
+
+/* O "+" roda e passa a "×" quando a resposta está aberta */
+.perguntas summary .icone {
+  color: var(--bordeaux);
+  transition: transform 0.2s;
+}
+
+.perguntas details[open] summary .icone { transform: rotate(45deg); }
+
+.perguntas details p {
+  margin: 0 0 1.3rem;
+  max-width: 40rem;
+}
+
+.perguntas a { color: var(--bordeaux); }
+
 /* ---------- Contactos ---------- */
 
 .lista-contactos {
@@ -465,4 +506,6 @@ a { color: inherit; }
     transform: none;
     transition: none;
   }
+
+  .perguntas summary .icone { transition: none; }
 }
