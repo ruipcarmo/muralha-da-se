@@ -131,9 +131,9 @@ a { color: inherit; }
   display: flex;
   align-items: flex-end;
   color: var(--branco);
-  /* Foto da fachada com uma camada escura por cima para o texto se ler bem */
+  /* Foto da fachada com uma sombra preta suave do lado do texto, para se ler bem */
   background:
-    linear-gradient(to top, rgba(110, 26, 43, 0.92) 0%, rgba(110, 26, 43, 0.45) 55%, rgba(110, 26, 43, 0.2) 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0) 75%),
     url("imagens/718315666_18058588628718749_3420631590846412278_n.jpg") center 40% / cover no-repeat;
 }
 
