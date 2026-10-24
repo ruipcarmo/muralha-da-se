@@ -200,5 +200,38 @@
     <p class="rodape-nota">Site de demonstração</p>
   </footer>
 
+  <!-- Secções e fotos aparecem suavemente ao fazer scroll -->
+  <script>
+    (function () {
+      var menosMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (menosMovimento || !("IntersectionObserver" in window)) return;
+
+      var elementos = document.querySelectorAll(
+        ".contentor:not(.duas-colunas) > :not(.cartoes):not(.botao), .duas-colunas > div > :not(.botao), .cartao"
+      );
+
+      var observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visivel");
+            observador.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+      elementos.forEach(function (elemento) {
+        // Fotos e cartões lado a lado entram um pouco desfasados
+        var posicao = Array.prototype.indexOf.call(elemento.parentNode.children, elemento);
+        if (elemento.matches("img, .cartao")) {
+          elemento.style.transitionDelay = (posicao % 3) * 0.12 + "s";
+        }
+        elemento.classList.add("revelar");
+        observador.observe(elemento);
+      });
+
+      document.documentElement.classList.add("anima");
+    })();
+  </script>
+
 </body>
 </html>

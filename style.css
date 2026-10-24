@@ -171,6 +171,8 @@ a { color: inherit; }
   background:
     linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0) 75%),
     url("imagens/718315666_18058588628718749_3420631590846412278_n.jpg") center 40% / cover no-repeat;
+  /* Paralaxe só com CSS: a foto fica parada enquanto a página desliza por cima */
+  background-attachment: fixed;
 }
 
 .hero-texto {
@@ -414,6 +416,20 @@ a { color: inherit; }
 .rodape p { margin: 0.2rem 0; }
 .rodape-nota { font-size: 0.8rem; }
 
+/* ---------- Animação ao fazer scroll ---------- */
+
+/* A classe "anima" só é posta pelo JavaScript, por isso sem JavaScript tudo aparece normalmente */
+.anima .revelar {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.anima .revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- Telemóvel e tablet ---------- */
 
 @media (max-width: 800px) {
@@ -432,5 +448,21 @@ a { color: inherit; }
   .botao-ligar {
     display: flex;
     padding: 1.1rem 1.2rem;
+  }
+}
+
+/* Telemóveis e tablets tratam mal fundos fixos (a foto fica enorme ou treme): sem paralaxe */
+@media (max-width: 800px), (hover: none) {
+  .hero { background-attachment: scroll; }
+}
+
+/* Quem pediu menos movimento no dispositivo não vê nenhum dos efeitos */
+@media (prefers-reduced-motion: reduce) {
+  .hero { background-attachment: scroll; }
+
+  .anima .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
